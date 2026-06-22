@@ -37,21 +37,20 @@ export default function Navbar() {
   }, []);
 
   const menuItems = [
-    { label: 'Home',       href: '#home'       },
-    { label: 'About',      href: '#about'      },
+    { label: 'Home', href: '#home' },
+    { label: 'About', href: '#about' },
     { label: 'Experience', href: '#experience' },
-    { label: 'Projects',   href: '#projects'   },
-    { label: 'Skills',     href: '#skills'     },
-    { label: 'Contact',    href: '#contact'    },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
           ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg'
           : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-sm'
-      }`}
+        }`}
       role="navigation"
       aria-label="Main navigation"
     >
@@ -99,12 +98,12 @@ export default function Navbar() {
               {isDarkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
             </button>
             <a
-              href="/Kanagarajah_Thilakshan_CV.docx"
-              download="Kanagarajah_Thilakshan_CV.docx"
+              href="/Kanagarajah_Thilakshan_CV.pdf"
+              download="Kanagarajah_Thilakshan_CV.pdf"
               className="px-5 py-2 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600
                          text-white rounded-lg font-semibold text-sm shadow-md btn-3d
                          transition-all duration-200 flex items-center gap-2"
-              aria-label="Download Resume (DOCX)"
+              aria-label="Download Resume (PDF)"
             >
               <span>📥</span>
               <span>Resume</span>
