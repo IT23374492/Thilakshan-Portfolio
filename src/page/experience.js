@@ -9,8 +9,8 @@ function use3DTilt() {
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width  - 0.5;
-    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
     setStyle({ transform: `perspective(900px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) scale(1.02)`, transition: 'transform 0.08s ease-out' });
   };
   const onMouseLeave = () =>
@@ -87,18 +87,6 @@ function ExperienceCard({ exp, idx }) {
 export default function Experience() {
   const experiences = [
     {
-      position: 'Assistant Pharmacist – Staff',
-      company: 'Kurinchy',
-      period: 'Nov 2021 – Present',
-      location: 'Jaffna',
-      description: [
-        'Maintained accurate medication records and supported compliance with pharmacy regulations, quality standards, and safe prescription handling practices.',
-        'Assisted junior pharmacy assistants with pharmacy software usage, prescription processing workflows, and daily operational procedures.',
-        'Provided training support to team members on data-related software tools and analysis techniques used for operational tracking and decision support.',
-      ],
-      icon: <FaBriefcase />,
-    },
-    {
       position: 'UI/UX Developer (Part-Time)',
       company: 'Remote Project',
       period: 'Nov 2024 – Jun 2025',
@@ -110,6 +98,18 @@ export default function Experience() {
       ],
       icon: <FaCode />,
     },
+    {
+      position: 'Assistant Pharmacist – Staff',
+      company: 'Kurinchy',
+      period: 'Nov 2021 – Present',
+      location: 'Jaffna',
+      description: [
+        'Maintained accurate medication records and supported compliance with pharmacy regulations, quality standards, and safe prescription handling practices.',
+        'Assisted junior pharmacy assistants with pharmacy software usage, prescription processing workflows, and daily operational procedures.',
+        'Provided training support to team members on data-related software tools and analysis techniques used for operational tracking and decision support.',
+      ],
+      icon: <FaBriefcase />,
+    }
   ];
 
   const competencies = [

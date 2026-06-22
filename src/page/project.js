@@ -15,8 +15,8 @@ function use3DTilt() {
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width  - 0.5;
-    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
     setStyle({ transform: `perspective(900px) rotateY(${x * 14}deg) rotateX(${-y * 14}deg) scale(1.03)`, transition: 'transform 0.08s ease-out' });
   };
   const onMouseLeave = () =>
@@ -103,7 +103,7 @@ export default function Pro() {
       image: Project1,
       tech: 'React Native | Expo | Node.js | MongoDB | Stripe',
       description: 'Cross-platform hall booking and event management with RBAC, secure payments via Stripe, JWT auth, and real-time booking management.',
-      link: 'https://github.com/KanagarajahThilakshan',
+      link: 'https://github.com/IT23374492/Hall-Booking-Frontend',
     },
     {
       id: 2,
@@ -112,7 +112,7 @@ export default function Pro() {
       image: Project7,
       tech: 'Python | Flask | Pandas | Machine Learning',
       description: 'Intelligent timetable generation using ML and EDA, with a web interface for timetable viewing and schedule optimization.',
-      link: 'https://github.com/KanagarajahThilakshan',
+      link: 'https://github.com/IT24101940/University_Timetable_System',
     },
     {
       id: 3,
@@ -196,11 +196,10 @@ export default function Pro() {
             <button
               key={category}
               onClick={() => setActiveFilter(category)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                activeFilter === category
-                  ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg shadow-red-500/30 scale-105'
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-red-400 hover:text-red-500'
-              }`}
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${activeFilter === category
+                ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg shadow-red-500/30 scale-105'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-red-400 hover:text-red-500'
+                }`}
               aria-pressed={activeFilter === category}
             >
               {category}
