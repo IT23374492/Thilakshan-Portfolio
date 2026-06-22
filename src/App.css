@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ====================================================
+   FONTS
+   ==================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ====================================================
+   BASE RESETS
+   ==================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom selection highlight */
+::selection {
+  background: rgba(239, 68, 68, 0.25);
+  color: inherit;
+}
+
+/* Focus-visible ring for keyboard nav */
+:focus-visible {
+  outline: 2px solid #ef4444;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ====================================================
+   3D UTILITY CLASSES
+   ==================================================== */
+.perspective {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.card-3d {
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card-3d:hover {
+  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.4);
+}
+
+/* Glowing border on hover for 3D cards */
+.card-glow:hover {
+  box-shadow:
+    0 0 0 1px rgba(239, 68, 68, 0.3),
+    0 20px 40px -10px rgba(239, 68, 68, 0.15),
+    0 30px 60px -20px rgba(0,0,0,0.4);
+}
+
+/* ====================================================
+   FLOATING BLOB BACKGROUND
+   ==================================================== */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+  33%       { transform: translateY(-30px) translateX(20px) scale(1.05); }
+  66%       { transform: translateY(20px) translateX(-15px) scale(0.95); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50%       { transform: translateY(-40px) translateX(30px) rotate(180deg); }
+}
+
+@keyframes float-fast {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-20px) scale(1.1); }
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #ef4444, #f97316);
+  top: 10%;
+  left: -10%;
+  animation: float-slow 12s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #6366f1, #8b5cf6);
+  top: 40%;
+  right: -8%;
+  animation: float-medium 15s ease-in-out infinite;
+}
+
+.blob-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #06b6d4, #3b82f6);
+  bottom: 10%;
+  left: 30%;
+  animation: float-fast 10s ease-in-out infinite;
+}
+
+/* ====================================================
+   PROFILE IMAGE 3D FLOATING
+   ==================================================== */
+@keyframes float-profile {
+  0%, 100% { transform: translateY(0px) rotateX(0deg); }
+  50%       { transform: translateY(-12px) rotateX(2deg); }
+}
+
+.profile-float {
+  animation: float-profile 4s ease-in-out infinite;
+}
+
+/* ====================================================
+   SCROLL REVEAL HELPERS
+   ==================================================== */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ====================================================
+   SKILL CARD SHINE EFFECT
+   ==================================================== */
+.skill-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.skill-shine:hover::after {
+  left: 125%;
+}
+
+/* ====================================================
+   BUTTON 3D EFFECTS
+   ==================================================== */
+.btn-3d {
+  position: relative;
+  transform: translateY(0);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-3d:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.5);
+}
+
+.btn-3d:active {
+  transform: translateY(-1px);
+}
+
+.btn-3d-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* ====================================================
+   SECTION TITLE UNDERLINE DECORATION
+   ==================================================== */
+.section-title-line {
+  display: inline-block;
+  position: relative;
+}
+
+.section-title-line::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, #ef4444, #f97316);
+  border-radius: 2px;
+}
+
+/* ====================================================
+   TIMELINE CONNECTOR (Education)
+   ==================================================== */
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ef4444;
+  border: 3px solid white;
+  box-shadow: 0 0 0 3px #ef4444;
+  flex-shrink: 0;
+}
+
+/* ====================================================
+   DARK MODE VARIABLES
+   ==================================================== */
+.dark .bg-primary  { background-color: #0f172a; }
+.dark .text-white  { color: #f8fafc; }
+
+/* ====================================================
+   PRINT / ATS STYLES
+   ==================================================== */
+@media print {
+  /* Hide everything visual */
+  nav,
+  .blob,
+  .profile-float,
+  .no-print,
+  button,
+  video,
+  canvas {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-family: 'Arial', sans-serif !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  section {
+    page-break-inside: avoid;
+    padding: 12px 0 !important;
+    background: white !important;
+  }
+
+  h1, h2, h3 {
+    color: black !important;
+    page-break-after: avoid;
+  }
+
+  a { color: black !important; text-decoration: underline; }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+}
